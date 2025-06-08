@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎰 PragmaticSpinner
 
-## Getting Started
+Pragmatic oyunları için geliştirilmiş otomatik spin test aracı. Oyun içi API isteklerini yöneterek otomatik veya manuel olarak spin atma, free spin satın alma ve yanıt analizi özellikleri sunar.
 
-First, run the development server:
+## 🚀 Özellikler
+- Gerçek oturum üzerinden MGC Key ile bağlantı
+- Otomatik spin döngüsü (Auto Spin)
+- Free spin satın alma (Buy Feature)
+- Kazanç ve spin istatistiklerini analiz etme
+- API yanıtı parsing ve hata kontrolü
+- Kullanıcı dostu Next.js tabanlı arayüz
 
-```bash
+## 🛠️ Kurulum
+1. Depoyu klonlayın:
+git clone https://github.com/satoshiMakat/PragmaticSpinner.git
+cd PragmaticSpinner
+
+2. Bağımlılıkları yükleyin:
+npm install
+
+3. Uygulamayı başlatın:
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Tarayıcıdan http://localhost:3000 adresine giderek uygulamayı kullanabilirsiniz.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🧩 Teknolojiler
+- Next.js – React tabanlı framework
+- TypeScript – Tip güvenli geliştirme
+- Tailwind CSS – Modern ve sade stil
+- API Middleware – Sunucu üzerinden proxy istekler
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🔑 MGC Key Nasıl Alınır?
+Bu araç gerçek bir oyun oturumu üzerinde test yapar. Bu nedenle, Pragmatic altyapısındaki oyunlardan alınan MGC Key (session key) bilgisine ihtiyaç vardır.
 
-## Learn More
+1. Herhangi bir demo Pragmatic oyununu açın.
+2. Oyunda 1 spin atın ve bitmesini bekleyin.
+3. Sağ tıklayıp tarayıcıdan Geliştirici Araçları (DevTools) panelini açın.
+4. Ağ (Network) sekmesinde "gameservice" adlı POST isteğini bulun.
+5. İsteğin Payload kısmında şu benzeri verileri göreceksiniz:
 
-To learn more about Next.js, take a look at the following resources:
+index: 2  
+counter: 3  
+repeat: 0  
+mgckey: stylename@ext_bettilt~SESSION@ff7e39a3-51fa-4a74-837f-cdc5961d4633  
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Kullanmanız gerekenler:
+- mgckey: Olduğu gibi kopyalayıp uygulamaya yapıştırın.
+- index +1 → (örnek: 2 → 3 girilmeli)
+- counter +2 → (örnek: 3 → 5 girilmeli)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Bu ayarlardan sonra manuel veya otomatik spin atmaya hazırsınız.
 
-## Deploy on Vercel
+Bu değerler sunucu tarafında geçerli olması için önemlidir. Aksi takdirde "invalid action" hatası alınır.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## ⚙️ Kullanım
+1. Gerekli spin parametrelerini arayüzden girin.
+2. "Spin" butonuyla manuel test yapın.
+3. "Auto Spin" panelinden spin sayısını belirleyip otomatik test başlatın.
+4. İstatistikler, kazançlar ve API yanıtı anlık olarak görüntülenir.
+5. Free spin destekleyen oyunlarda “Buy Feature” özelliğini aktif ederek test yapılabilir.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📂 Örnek Klasör Yapısı
+src/components/           → Arayüz bileşenleri  
+src/hooks/                → React özel hook'lar  
+src/pages/                → Next.js sayfaları  
+public/                   → Statik dosyalar  
+next.config.ts            → Next.js yapılandırması  
+package.json              → Proje bağımlılıkları
+
+## ⚡ Neden Bu Aracı Kullanmalısınız?
+- 10.000+ spin’i dakikalar içinde atarak oyun davranışlarını analiz edebilirsiniz.
+- Free spin senaryolarını test edebilir, hata ve edge-case durumlarını görebilirsiniz.
+- Spin başına kazanç, toplam kazanç, tumble/collect gibi değerleri çıkarıp analiz edebilirsiniz.
+
+## ⚠️ Uyarı
+Unutmayın: Bu araç yalnızca teknik testler ve yazılım geliştirme süreçleri için tasarlanmıştır.  
+Kumar her zaman kaybettirir. Lütfen sorumlu şekilde kullanın.
+
+## 🛡️ Lisans
+MIT Lisansı – Dilediğiniz gibi kullanabilir, geliştirebilir ve dağıtabilirsiniz.
+
+## 📬 Katkıda Bulunmak
+Pull request’ler ve issue’lar her zaman açıktır. Yeni fikir veya düzeltme varsa memnuniyetle karşılanır.
